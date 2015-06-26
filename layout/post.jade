@@ -1,0 +1,17 @@
+extends ./_base/normal
+include ./_base/article
+include ./_base/siderbar
+
+block append head
+  link(href="/css/post.css",rel="stylesheet")
+  link(href="/css/siderbar.css",rel="stylesheet")
+  link(href="/css/article.css",rel="stylesheet")
+block siderbar
+  .toc
+    +normal-siderbar("small")
+      !{toc(page.content,{})}
+   
+
+block main
+  +post-article(page,"content") 
+          

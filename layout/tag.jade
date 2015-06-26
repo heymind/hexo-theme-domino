@@ -1,0 +1,25 @@
+extends ./_base/normal
+include ./_base/article
+include ./_base/siderbar
+
+block append head
+  link(href="/css/siderbar.css",rel="stylesheet")
+  link(href="/css/article.css",rel="stylesheet")
+  link(href="/css/category-tag.css",rel="stylesheet")
+
+
+
+block siderbar
+  +normal-siderbar("small")
+    !{list_tags()}
+  
+
+block main
+  -console.log(category)
+  +blank-article("tag:"+page.tag)
+  each post in page.posts.data
+    case post.layout
+      when 'post'
+        //- from /_base/post
+        +post-article(post,"content")
+  div.paginator!= paginator()

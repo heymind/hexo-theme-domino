@@ -1,0 +1,22 @@
+extends ./base.jade
+block append head
+  link(href="/css/normalize.css",rel="stylesheet")
+  link(href="/css/normal.css",rel="stylesheet")
+  link(href="/css/markdown.css",rel="stylesheet")
+block body
+  #blog
+    header#header
+      block header
+        i#header-show.fa.fa-2x.fa-th-list
+        
+        h1= config.title
+        i#header-head.fa-arrow-up.fa.fa-2x
+        
+    block siderbar
+    #main
+        .main-wapper
+          block main
+      
+    
+  #about
+  

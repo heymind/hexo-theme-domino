@@ -1,0 +1,50 @@
+
+mixin article-header(title,date,link,cate)
+  .article-header
+    h1
+      a.title(href=link)= title
+    -
+      if(date && cate){
+        _output= date +" in "
+      }else{
+        if(date){
+          _output= date
+        }else{
+          _output=""
+        }
+      }
+    p #{_output} !{cate} 
+    .article-header-white
+
+mixin article-footer(tags)
+  .article-footer!=tags
+
+mixin post-article(post,which)
+  -
+    title=post.title
+    link=url_for(post.path)
+    datex=date(post.date)
+    cate=list_categories(post.categories,{"depth":1,"show_count":false})
+    tags=list_tags(post.tags,{"show_count":false})
+    text=post[which]
+  article.article.article-post
+    +article-header(title,datex,link,cate)
+    .markdown-body!= text
+    +article-footer(tags)
+
+mixin blank-article(title,header,footer)
+  article.article
+    if title
+      +article-header(title,header)
+    block
+    if footer
+      +article-footer(footer)
+
+
+        article.article
+mixin blank-article(title,header,footer)
+    if title
+      +article-header(title,header)
+    block
+    if footer
+      +article-footer(footer)

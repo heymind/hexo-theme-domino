@@ -1,0 +1,29 @@
+extends ./_base/normal
+include ./_base/article
+include ./_base/siderbar
+
+
+    
+
+block append head
+  link(href="/css/index.css",rel="stylesheet")
+  link(href="/css/siderbar.css",rel="stylesheet")
+  link(href="/css/article.css",rel="stylesheet")
+
+block siderbar
+  +normal-siderbar("normal")
+    .siderbar-links
+      +alink('Home','abc','fa fa-camera-retro fa-lg')
+      +alink('Categories','abc','fa fa-camera-retro fa-lg')
+    a.links
+      i.link-icon   
+   
+
+block main
+  each post in page.posts.data
+    case post.layout
+      when 'post'
+        //- from /_base/post
+        +post-article(post,"content")
+  div.paginator!= paginator()
+          

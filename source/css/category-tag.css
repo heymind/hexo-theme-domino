@@ -1,0 +1,15 @@
+
+#siderbar .category-list,.category-list ul {
+  padding-left: 1rem;
+}
+#siderbar .tag-list,#siderbar .category-list{
+  padding-left: 3rem;
+  padding-right: 3rem;
+}
+#siderbar .category-list-count,#siderbar .tag-list-count{
+  float: right;
+}
+
+#siderbar .tag-list-item,.category-list-item{
+  margin: .5rem 0;
+}

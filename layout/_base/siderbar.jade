@@ -1,0 +1,19 @@
+mixin alink(title, link, icon)
+  a.siderbar-link(href=link)
+    i(class=icon)
+    span.link-desc= title
+
+//- small siderbar is available
+mixin normal-siderbar(_class)
+  nav#siderbar(class=_class)
+    .siderbar-overlay
+    .siderbar-content
+      a.pic
+        img
+      a(href=url_for('/'))
+        h1.title= config.title
+        if _class="small"
+          i.home.fa.fa-home.fa-2x
+      h2.subtitle= config.subtitle
+      .siderbar-wapper
+        block
